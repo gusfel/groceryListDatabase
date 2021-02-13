@@ -7,6 +7,6 @@ var router = require('express').Router();
 
 router.get('/', controller.getGroceryList);
 
-// groceries.post('/', controller.post);
+router.post('/', controller.addToList);
 
 module.exports = router;

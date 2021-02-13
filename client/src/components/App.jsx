@@ -22,16 +22,24 @@ class App extends React.Component {
       })
   }
 
-  postGrocery(grocery, callback){
-    axios.post('/groceries', grocery)
-      .then(callback)
-      .catch(callback)
-  }
+  // postGrocery(grocery, callback){
+  //   axios.post('/groceries', grocery)
+  //     .then(callback)
+  //     .catch(callback)
+  // }
 
 
   addGrocery(grocery) {
-    this.postGrocery(grocery, console.log)
-    this.setState({groceryList: [...this.state.groceryList, grocery]})
+    // this.postGrocery(grocery, console.log)
+    axios.post('/groceries', grocery)
+      .then(response => {
+        // console.log(response.data)
+        this.setState({groceryList: [...this.state.groceryList, response.data]})
+
+      })
+    // .then(callback)
+    // .catch(callback)
+    // this.setState({groceryList: [...this.state.groceryList, grocery]})
 
   }
 

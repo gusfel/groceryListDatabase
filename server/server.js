@@ -13,6 +13,8 @@ const groceries = [
   {item: 'Coffee', quantity: 1},
   {item: 'Ice Cream', quantity: 2}
 ];
+//makes it so we can split the body of our data into res.body.name
+app.use(express.json());
 
 app.use('/groceries', router);
 
