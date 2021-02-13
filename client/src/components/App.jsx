@@ -22,9 +22,17 @@ class App extends React.Component {
       })
   }
 
+  postGrocery(grocery, callback){
+    axios.post('/groceries', grocery)
+      .then(callback)
+      .catch(callback)
+  }
+
 
   addGrocery(grocery) {
+    this.postGrocery(grocery, console.log)
     this.setState({groceryList: [...this.state.groceryList, grocery]})
+
   }
 
   render() {

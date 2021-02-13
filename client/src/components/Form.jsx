@@ -18,14 +18,14 @@ class Form extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.addGrocery(this.state);
-    this.setState({item: '', quantity: ''})
+    this.setState({name: '', quantity: ''})
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <label> Item
-          <input name="item" value={this.state.item} onChange={this.handleChange}/>
+          <input name="name" value={this.state.name} onChange={this.handleChange}/>
         </label>
         <label> Quantity
           <input name="quantity" value={this.state.quantity} onChange={this.handleChange}/>
