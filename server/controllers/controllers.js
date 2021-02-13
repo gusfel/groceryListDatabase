@@ -1,5 +1,8 @@
 // var models = require('../models/models.js');
 var db = require('../DB/index.js');
+var Promise = require('bluebird');
+
+var dbAsync = Promise.promisify(db.query);
 
 module.exports = {
   getGroceryList: (req, res) => {
@@ -14,6 +17,7 @@ module.exports = {
 
   addToList: (req, res) => {
     var params = [req.body.name, req.body.quantity];
+
     db.query(`INSERT INTO groceries (name, quantity) VALUES ('${req.body.name}', ${req.body.quantity})`, (err, data) => {
   // res.status(201)
       if (err) {

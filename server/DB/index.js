@@ -14,7 +14,6 @@ connection.connect(err => {
   } else {
     console.log('connected to groceries database');
   }
-
 });
 
 module.exports = connection;
