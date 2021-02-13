@@ -10,4 +10,5 @@ const List = ({groceries}) => {
   )
 }
 
+
 export default List;
