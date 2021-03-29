@@ -1,5 +1,8 @@
 import React from 'react';
 
-const ListItem = (props) => <li>{props.grocery.name + " " + props.grocery.quantity}</li>
+const ListItem = ({ grocery }) =>
+  <li>
+    {grocery.name + " " + grocery.quantity}
+  </li>
 
 export default ListItem;

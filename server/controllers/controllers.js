@@ -1,14 +1,12 @@
-// var models = require('../models/models.js');
 var db = require('../DB/index.js');
 var Promise = require('bluebird');
 
-var dbAsync = Promise.promisify(db.query);
 
 module.exports = {
   getGroceryList: (req, res) => {
     db.query('SELECT * FROM groceries', (err, data) => {
       if (err) {
-        console.log('error!');
+        res.status(202);
       } else {
         res.send(data);
       }
@@ -19,12 +17,11 @@ module.exports = {
     var params = [req.body.name, req.body.quantity];
 
     db.query(`INSERT INTO groceries (name, quantity) VALUES ('${req.body.name}', ${req.body.quantity})`, (err, data) => {
-  // res.status(201)
       if (err) {
-        console.log('error!!');
+        res.status(404);
       } else {
-        db.query(`SELECT * FROM groceries where id=${data.insertId}`, (err, data) => {
-          if (err) {
+        db.query(`SELECT * FROM groceries where id=${data.insertId}`, (err2, data) => {
+          if (err2) {
             res.status(404);
           } else {
             res.send(data[0]);
@@ -34,35 +31,3 @@ module.exports = {
     });
   }
 };
-
-
-
-
-// get: (req, res) => {
-//   models.models.getAll((err, data) => {
-//     if (err) {
-//       throw err;
-//     } else {
-//       res.send(data);
-//     }
-//   });
-// },
-
-// post: (req, res) => {
-//   const params = [req.body.name, req.body.quantity];
-//   models.models.create(params, (err, data) => {
-//     res.send(data);
-//   });
-// }
-
-
-
-// modules.exports = controllers;
-
-// db.query('SELECT * FROM groceries', (err, data) => {
-//   if (err) {
-//     throw error;
-//   } else {
-//     cb(data);
-//   }
-// });
