@@ -6,4 +6,5 @@ const dummyData = [
   {item: "Ice Cream", quantity: 2}
 ]
 
+
 export default dummyData;

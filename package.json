@@ -19,7 +19,9 @@
     "webpack": "^2.2.1"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "express": "^4.15.0",
+    "mongoose": "^5.11.17",
     "mysql": "^2.16.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",

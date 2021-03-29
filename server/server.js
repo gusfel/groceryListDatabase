@@ -3,7 +3,8 @@ const app = express();
 const PORT = 3000;
 const path = require('path');
 
-const db = require('./DB/db.js');
+const db = require('./DB/index.js');
+const router = require('./routes.js');
 
 const groceries = [
   {item: 'Milk', quantity: 1},
@@ -12,10 +13,10 @@ const groceries = [
   {item: 'Coffee', quantity: 1},
   {item: 'Ice Cream', quantity: 2}
 ];
+//makes it so we can split the body of our data into res.body.name
+app.use(express.json());
 
-app.get('/groceries', (req, res) => {
-  res.send(groceries);
-});
+app.use('/groceries', router);
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 

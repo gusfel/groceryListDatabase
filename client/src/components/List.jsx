@@ -1,11 +1,14 @@
 import React from 'react';
 import ListItem from './ListItem.jsx';
 
-const List = ({groceries}) => {
-  console.log(groceries)
+const List = ({ groceries }) => {
   return (
     <ul className="groceries">
-      {groceries.map((grocery, index) => <ListItem key={grocery.id} grocery={grocery}/>)}
+      {groceries.map((grocery, index) =>
+      <ListItem
+        key={grocery.id}
+        grocery={grocery}
+      />)}
     </ul>
   )
 }
